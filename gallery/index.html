@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sessions | Burak Gulum</title>
-<meta name="title" content="Sessions | Burak Gulum">
-<meta name="description" content="All session entries from the Leadership &amp; Learning Journal by Burak Gulum.">
+<title>Gallery | Burak Gulum</title>
+<meta name="title" content="Gallery | Burak Gulum">
+<meta name="description" content="Working notes and diagrams for entries from the Leadership &amp; Learning Journal by Burak Gulum.">
 <meta name="author" content="S. Burak Gulum">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#F7F5EF">
-<link rel="canonical" href="https://www.gunesoriginals.com/sessions/">
+<link rel="canonical" href="https://www.gunesoriginals.com/gallery/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Leadership &amp; Learning Journal | Burak Gulum">
-<meta property="og:title" content="Sessions | Burak Gulum">
-<meta property="og:description" content="All session entries from the Leadership &amp; Learning Journal by Burak Gulum.">
-<meta property="og:url" content="https://www.gunesoriginals.com/sessions/">
+<meta property="og:title" content="Gallery | Burak Gulum">
+<meta property="og:description" content="Working notes and diagrams for entries from the Leadership &amp; Learning Journal by Burak Gulum.">
+<meta property="og:url" content="https://www.gunesoriginals.com/gallery/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sessions | Burak Gulum">
-<meta name="twitter:description" content="All session entries from the Leadership &amp; Learning Journal by Burak Gulum.">
+<meta name="twitter:title" content="Gallery | Burak Gulum">
+<meta name="twitter:description" content="Working notes and diagrams for entries from the Leadership &amp; Learning Journal by Burak Gulum.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..600;1,300..600&amp;family=Zen+Kaku+Gothic+New:wght@300;400;500&amp;display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
     },
     {
       "@type": "CollectionPage",
-      "@id": "https://www.gunesoriginals.com/sessions/#webpage",
-      "url": "https://www.gunesoriginals.com/sessions/",
-      "name": "Sessions",
+      "@id": "https://www.gunesoriginals.com/gallery/#webpage",
+      "url": "https://www.gunesoriginals.com/gallery/",
+      "name": "Gallery",
       "isPartOf": {
         "@id": "https://www.gunesoriginals.com/#website"
       },
@@ -64,15 +64,11 @@
   .brand-text { font-family:'Cormorant Garamond',serif; font-size:23px; letter-spacing:.03em; }
   .site-nav { display:flex; gap:30px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; align-items:center; }
   .header-line { height:1px; background:#33362E24; max-width:1040px; margin:0 auto; }
-  .sessions-shell { max-width:640px; margin:0 auto; padding:72px 32px 100px; }
+  .gallery-shell { max-width:1040px; margin:0 auto; padding:72px 32px 100px; }
   .section-label { margin:0 0 36px; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:20px; }
-  .session-list { display:flex; flex-direction:column; }
-  .session-row { display:flex; flex-direction:column; gap:4px; padding:12px 4px; border-bottom:1px solid #33362E1A; color:#33362E; text-decoration:none; }
-  .session-row:hover { background:#EDEAE0; text-decoration:none; }
-  .archive-row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
-  .archive-date { font-size:12px; color:#6B6F63; }
-  .archive-status { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5C6B4F; }
-  .session-title { font-family:'Cormorant Garamond',serif; font-size:16px; line-height:1.35; }
+  .gallery-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px; align-items:start; }
+  .gallery-item { display:block; background:#EDEAE0; border:1px solid #33362E14; }
+  .gallery-item img { width:100%; height:auto; display:block; }
   .site-footer { max-width:1040px; margin:0 auto; padding:48px 32px 44px; }
   .footer-inner { border-top:1px solid #33362E24; padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; gap:28px; flex-wrap:wrap; }
   .footer-title { margin:0; font-family:'Cormorant Garamond',serif; font-size:24px; color:#33362E; }
@@ -81,20 +77,22 @@
   @media (max-width: 980px) {
     .site-header { align-items:flex-start; flex-direction:column; padding:22px 20px; }
     .site-nav { width:100%; gap:16px; justify-content:flex-start; overflow-x:auto; padding-bottom:4px; font-size:11px; letter-spacing:.1em; }
-    .sessions-shell { padding:48px 20px 76px; }
-    .archive-row { align-items:flex-start; flex-direction:column; gap:2px; }
+    .gallery-shell { padding:48px 20px 76px; }
     .site-footer { padding:38px 20px 36px; }
     .footer-inner { align-items:flex-start; flex-direction:column; }
     .footer-links { flex-direction:column; gap:12px; letter-spacing:.1em; line-height:1.6; }
   }
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns:1fr; gap:22px; }
+  }
   @media (max-width: 520px) {
     .brand-text { font-size:21px; }
-    .sessions-shell { padding-left:18px; padding-right:18px; }
+    .gallery-shell { padding-left:18px; padding-right:18px; }
   }
 </style>
 </head>
 <body>
-<div style="min-height:100vh; background:#F7F5EF" data-screen-label="Sessions">
+<div style="min-height:100vh; background:#F7F5EF" data-screen-label="Gallery">
   <header class="site-header">
     <a class="site-brand" href="/">
       <img src="../uploads/WhatsApp Image 2026-08-06 at 9.04.10 AM.jpeg" alt="Portrait of Burak Gulum" width="42" height="42">
@@ -109,16 +107,27 @@
   </header>
   <div class="header-line"></div>
 
-  <main class="sessions-shell">
+  <main class="gallery-shell">
     <section>
-      <p class="section-label">Sessions</p>
-      <div class="session-list">
-        <a class="session-row" href="/entries/001-im-going-to-do-it-im-doing-it/">
-          <div class="archive-row">
-            <span class="archive-date">Aug 14</span>
-            <span class="archive-status">Read</span>
-          </div>
-          <span class="session-title">Entry 001 · From “I’m going to do it” to “I’m doing it.”</span>
+      <p class="section-label">Entry 001</p>
+      <div class="gallery-grid">
+        <a class="gallery-item" href="../uploads/B240E89C-F1AC-42C0-875C-0943FD43F3D3.jpeg">
+          <img src="../uploads/B240E89C-F1AC-42C0-875C-0943FD43F3D3.jpeg" alt="Handwritten notebook page for Entry 001 about derivatives, trust, growth, and movement." loading="lazy" decoding="async">
+        </a>
+        <a class="gallery-item" href="../uploads/F44C60ED-824C-4E52-A722-018E2312B494.jpeg">
+          <img src="../uploads/F44C60ED-824C-4E52-A722-018E2312B494.jpeg" alt="Handwritten notebook page for Entry 001 listing opening questions for business conversations." loading="lazy" decoding="async">
+        </a>
+        <a class="gallery-item" href="../uploads/51AF801E-B3A3-4E37-AE52-F63FC8FE9FE3.jpeg">
+          <img src="../uploads/51AF801E-B3A3-4E37-AE52-F63FC8FE9FE3.jpeg" alt="Handwritten notebook diagram for Entry 001 about asking questions, being seen, heard, and understood." loading="lazy" decoding="async">
+        </a>
+        <a class="gallery-item" href="../uploads/10DFD11F-8755-432A-A257-8EB12A774BCD.jpeg">
+          <img src="../uploads/10DFD11F-8755-432A-A257-8EB12A774BCD.jpeg" alt="Handwritten notebook diagram for Entry 001 about listening, experience, value, and relationship-building." loading="lazy" decoding="async">
+        </a>
+        <a class="gallery-item" href="../uploads/A261F0A9-3057-430B-AC44-E8A2C5133B0A.jpeg">
+          <img src="../uploads/A261F0A9-3057-430B-AC44-E8A2C5133B0A.jpeg" alt="Handwritten notebook page for Entry 001 about closing questions and coaching each other." loading="lazy" decoding="async">
+        </a>
+        <a class="gallery-item" href="../uploads/426EDF29-D422-46E3-AB9A-0940509514AB.jpeg">
+          <img src="../uploads/426EDF29-D422-46E3-AB9A-0940509514AB.jpeg" alt="Handwritten notebook page for Entry 001 about BNI training, blogging, and education." loading="lazy" decoding="async">
         </a>
       </div>
     </section>
