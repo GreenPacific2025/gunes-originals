@@ -64,6 +64,8 @@
     .latest-card .latest-image { aspect-ratio:4/3 !important; max-height:360px !important; }
     .latest-copy { margin-top:28px !important; gap:16px !important; }
     .latest-actions { align-items:flex-start !important; flex-direction:column !important; gap:10px !important; }
+    .session-row { align-items:flex-start !important; flex-direction:column !important; gap:14px !important; }
+    .session-action { align-self:flex-start !important; }
     .home-sidebar { margin-top:54px !important; gap:42px !important; }
     .archive-row { align-items:flex-start !important; flex-direction:column !important; gap:2px !important; }
     .post-body { padding:48px 20px 76px !important; }
@@ -132,10 +134,10 @@
       </div>
     </sc-if>
     <nav class="site-nav" style="display:flex; gap:30px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; align-items:center">
-      <a href="#sessions" onClick="{{ goHome }}">Sessions</a>
-      <a href="#topics" onClick="{{ goHome }}">Topics</a>
-      <a href="#subscribe" onClick="{{ goHome }}">Archive</a>
-      <a href="#connect" onClick="{{ goHome }}">Connect</a>
+      <a href="#sessions" onClick="{{ goSessions }}">Sessions</a>
+      <a href="#topics" onClick="{{ goTopics }}">Topics</a>
+      <a href="#archive" onClick="{{ goArchive }}">Archive</a>
+      <a href="#connect" onClick="{{ goConnect }}">Connect</a>
     </nav>
   </header>
   <div style="height:1px; background:#33362E24; max-width:1040px; margin:0 auto"></div>
@@ -152,44 +154,31 @@
     </div>
   </section>
 
-  <!-- Main two-column: latest session left, sidebar right -->
+  <!-- Main two-column: sessions left, sidebar right -->
   <div class="home-shell" style="max-width:1040px; margin:0 auto; padding:0 32px 100px; display:grid; grid-template-columns:1fr 280px; gap:72px; align-items:start">
   <div style="min-width:0">
-  <!-- Latest session -->
+  <!-- BNI training sessions -->
   <section id="sessions">
-    <p style="margin:0 0 36px; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:20px">Latest session</p>
-    <article class="latest-card" onClick="{{ openPost }}" style="display:grid; grid-template-columns:1fr 1.1fr; gap:40px; align-items:center; cursor:pointer">
-      <div style="min-width:0">
-        <div class="latest-image" style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; background:#EDEAE0">
-          <div role="img" aria-label="{{ carouselCaption }}" style="width:100%; height:100%; background-image:{{ carouselBg }}; background-size:cover; background-position:center"></div>
-          <button onClick="{{ carouselPrev }}" aria-label="Previous page" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border:1px solid #5C6B4F; border-radius:50%; background:#F7F5EFE6; color:#3E4A35; font-size:16px; cursor:pointer; font-family:'Zen Kaku Gothic New',sans-serif" style-hover="background:#5C6B4F; color:#F7F5EF">←</button>
-          <button onClick="{{ carouselNext }}" aria-label="Next page" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border:1px solid #5C6B4F; border-radius:50%; background:#F7F5EFE6; color:#3E4A35; font-size:16px; cursor:pointer; font-family:'Zen Kaku Gothic New',sans-serif" style-hover="background:#5C6B4F; color:#F7F5EF">→</button>
-        </div>
-        <div style="display:flex; justify-content:center; gap:8px; margin-top:12px">
-          <sc-for list="{{ carouselDots }}" as="dot" hint-placeholder-count="7">
-            <button onClick="{{ dot.go }}" aria-label="{{ dot.label }}" style="width:8px; height:8px; border-radius:50%; border:1px solid #5C6B4F; background:{{ dot.bg }}; padding:0; cursor:pointer"></button>
-          </sc-for>
-        </div>
-
-      </div>
-      <div class="latest-copy" style="min-width:0; display:flex; flex-direction:column; gap:20px">
-        <p style="margin:0; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#5C6B4F">Entry 001 · August 14, 2026</p>
-        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(30px,3.4vw,42px); line-height:1.18">From “I'm going to do it” to “I'm doing it.”</h2>
-        <p style="margin:0; font-size:16px; line-height:1.9; color:#4A4E42; font-weight:300">A BNI training session about small talk became the day this journal finally started. Small talk is not the destination — it's the door. Better questions, real listening, and the sentence that changed: I'm doing it.</p>
-        <div class="latest-actions" style="display:flex; gap:26px; align-items:center; margin-top:6px">
-          <span style="font-size:14px; letter-spacing:.12em; color:#5C6B4F; border-bottom:1px solid #5C6B4F; padding-bottom:3px">Read Entry 001</span>
-          <span style="font-size:13px; color:#6B6F63">Leadership · Networking</span>
-        </div>
-      </div>
-    </article>
+    <p style="margin:0 0 20px; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:20px">BNI training sessions</p>
+    <div style="display:flex; flex-direction:column; border-top:1px solid #33362E1A">
+      <sc-for list="{{ bniSessions }}" as="post" hint-placeholder-count="1">
+        <article class="session-row" onClick="{{ openPost }}" style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:20px 0; border-bottom:1px solid #33362E1A; cursor:pointer">
+          <div style="min-width:0">
+            <p style="margin:0 0 8px; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#5C6B4F">{{ post.entry }} · {{ post.date }}</p>
+            <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:26px; line-height:1.25">{{ post.title }}</h2>
+          </div>
+          <span class="session-action" style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#5C6B4F; flex-shrink:0">{{ post.status }}</span>
+        </article>
+      </sc-for>
+    </div>
   </section>
   </div>
 
   <!-- Right sidebar -->
   <aside class="home-sidebar" style="min-width:0; display:flex; flex-direction:column; gap:56px">
     <!-- Archive -->
-    <section>
-      <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:18px">All sessions</p>
+    <section id="archive">
+      <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:18px">All entries</p>
       <div style="display:flex; flex-direction:column">
         <sc-for list="{{ archive }}" as="post" hint-placeholder-count="4">
           <div onClick="{{ openPost }}" style="display:flex; flex-direction:column; gap:4px; padding:12px 4px; border-bottom:1px solid #33362E1A; cursor:pointer" style-hover="background:#EDEAE0">
@@ -435,11 +424,22 @@ class Component extends DCLogic {
   componentDidUpdate(prev) { if (prev.carouselAutoplay !== this.props.carouselAutoplay || prev.carouselAutoplaySeconds !== this.props.carouselAutoplaySeconds) this.restartAutoplay(); }
   componentWillUnmount() { clearInterval(this.timer); }
   replayAnim = () => { this.setState({ animOn: false }); setTimeout(() => this.setState({ animOn: true }), 60); };
+  goSection = (id, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ view: 'home' }, () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ block: 'start' });
+    });
+  };
   renderVals() {
     return {
       onHome: this.state.view === 'home',
       onPost: this.state.view === 'post',
       goHome: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ view: 'home' }); window.scrollTo(0, 0); },
+      goSessions: (e) => this.goSection('sessions', e),
+      goTopics: (e) => this.goSection('topics', e),
+      goArchive: (e) => this.goSection('archive', e),
+      goConnect: (e) => this.goSection('connect', e),
       openPost: () => { this.setState({ view: 'post' }); window.scrollTo(0, 0); },
       animOn: this.state.animOn,
       noteOpen: this.state.noteOpen,
@@ -464,6 +464,14 @@ class Component extends DCLogic {
         { pad: 88, label: 'Understanding' }, { pad: 110, label: 'Connection' },
         { pad: 132, label: 'Familiarity' }, { pad: 154, label: 'Trust' },
         { pad: 176, label: 'Relationship' }, { pad: 198, label: 'Referrals' },
+      ],
+      bniSessions: [
+        {
+          entry: 'Entry 001',
+          date: 'August 14, 2026',
+          title: 'From \u201cI\u2019m going to do it\u201d to \u201cI\u2019m doing it.\u201d',
+          status: 'Read',
+        },
       ],
       archive: [
         { date: 'Aug 14', title: 'Entry 001 \u00b7 From \u201cI\u2019m going to do it\u201d to \u201cI\u2019m doing it.\u201d', status: 'Read' },
