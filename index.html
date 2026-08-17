@@ -128,14 +128,14 @@
   <!-- Header -->
   <header class="site-header" style="max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 32px">
     <sc-if value="{{ onHome }}" hint-placeholder-val="{{ true }}">
-      <a class="site-brand" href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
+      <a class="site-brand" href="/" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
         <image-slot id="portrait" role="img" aria-label="Portrait of Burak Gulum" shape="circle" src="uploads/WhatsApp Image 2026-08-06 at 9.04.10 AM.jpeg" placeholder="Portrait" style="width:42px; height:42px; flex-shrink:0"></image-slot>
         <span style="font-family:'Cormorant Garamond',serif; font-size:23px; letter-spacing:.03em">Burak Gulum</span>
       </a>
     </sc-if>
     <sc-if value="{{ onPost }}" hint-placeholder-val="{{ false }}">
       <div class="post-header-row" style="display:flex; align-items:center; gap:28px; min-width:0">
-        <a class="site-brand" href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
+        <a class="site-brand" href="/" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
           <svg viewBox="0 0 26 34" style="width:22px; height:30px; flex-shrink:0" fill="none">
             <rect x="1.5" y="1.5" width="23" height="31" stroke="#33362E" stroke-width="2"></rect>
             <line x1="13" y1="9" x2="13" y2="25" stroke="#5C6B4F" stroke-width="2"></line>
@@ -150,7 +150,7 @@
       </div>
     </sc-if>
     <nav class="site-nav" style="display:flex; gap:30px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; align-items:center">
-      <a href="#sessions" onClick="{{ goHome }}">Sessions</a>
+      <a href="/sessions/">Sessions</a>
       <a href="#topics" onClick="{{ goHome }}">Topics</a>
       <a href="#subscribe" onClick="{{ goHome }}">Archive</a>
       <a href="#connect" onClick="{{ goHome }}">Connect</a>
