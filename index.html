@@ -34,14 +34,54 @@
   @keyframes inkdraw { from { stroke-dashoffset:1; } to { stroke-dashoffset:0; } }
   @keyframes ideain { from { opacity:0; transform:translateX(14px); } to { opacity:1; transform:none; } }
   @keyframes conceptin { from { opacity:0; letter-spacing:.4em; } to { opacity:1; letter-spacing:.08em; } }
+  @media (max-width: 980px) {
+    .notice-backdrop { align-items:flex-start !important; overflow:auto !important; padding:18px !important; }
+    .notice-card { width:100% !important; max-width:560px !important; padding:32px 24px !important; box-sizing:border-box !important; }
+    .site-header { align-items:flex-start !important; flex-direction:column !important; padding:22px 20px !important; }
+    .post-header-row { align-items:flex-start !important; flex-direction:column !important; gap:16px !important; }
+    .post-entry-meta { flex-wrap:wrap !important; gap:10px !important; white-space:normal !important; letter-spacing:.14em !important; line-height:1.6 !important; }
+    .post-entry-meta span[style*="width:36px"] { width:24px !important; }
+    .site-nav { width:100% !important; gap:16px !important; justify-content:flex-start !important; overflow-x:auto !important; padding-bottom:4px !important; font-size:11px !important; letter-spacing:.1em !important; }
+    .hero-section { padding:62px 20px 66px !important; }
+    .home-shell { display:block !important; padding:0 20px 72px !important; }
+    .latest-card { display:block !important; }
+    .latest-card .latest-image { aspect-ratio:4/3 !important; max-height:360px !important; }
+    .latest-copy { margin-top:28px !important; gap:16px !important; }
+    .latest-actions { align-items:flex-start !important; flex-direction:column !important; gap:10px !important; }
+    .home-sidebar { margin-top:54px !important; gap:42px !important; }
+    .archive-row { align-items:flex-start !important; flex-direction:column !important; gap:2px !important; }
+    .post-body { padding:48px 20px 76px !important; }
+    .entry-kicker { letter-spacing:.12em !important; line-height:1.8 !important; overflow-wrap:anywhere !important; }
+    .entry-title { margin-bottom:38px !important; }
+    .entry-media-grid { grid-template-columns:1fr !important; gap:22px !important; }
+    .entry-image-frame { max-width:280px !important; margin:4px auto 0 !important; }
+    .entry-chain { display:block !important; letter-spacing:.04em !important; overflow-wrap:anywhere !important; }
+    .comment-actions { flex-wrap:wrap !important; }
+    .site-footer { padding:38px 20px 36px !important; }
+    .footer-inner { align-items:flex-start !important; flex-direction:column !important; }
+    .footer-links { flex-direction:column !important; gap:12px !important; letter-spacing:.1em !important; line-height:1.6 !important; }
+  }
+  @media (max-width: 520px) {
+    .notice-card { padding:28px 20px !important; }
+    .site-brand span { font-size:21px !important; }
+    .hero-section h1 { font-size:40px !important; }
+    .home-shell { padding-left:18px !important; padding-right:18px !important; }
+    .latest-card .latest-image { aspect-ratio:1/1 !important; max-height:none !important; }
+    .latest-copy h2 { font-size:30px !important; line-height:1.2 !important; }
+    .post-body { padding-left:18px !important; padding-right:18px !important; }
+    .entry-title { font-size:36px !important; }
+    .entry-image-frame { max-width:240px !important; }
+    .subscribe-form { flex-direction:column !important; }
+    .subscribe-form button { width:max-content !important; }
+  }
 </style>
 </helmet>
 
 <div style="min-height:100vh; background:#F7F5EF" data-screen-label="Journal">
 
   <sc-if value="{{ noteOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed; inset:0; z-index:60; background:#33362E80; display:flex; align-items:center; justify-content:center; padding:24px; animation:settle .4s ease both">
-    <div style="max-width:560px; background:#F7F5EF; padding:52px 56px; box-shadow:0 30px 80px rgba(51,54,46,.35)">
+  <div class="notice-backdrop" style="position:fixed; inset:0; z-index:60; background:#33362E80; display:flex; align-items:center; justify-content:center; padding:24px; animation:settle .4s ease both">
+    <div class="notice-card" style="max-width:560px; background:#F7F5EF; padding:52px 56px; box-shadow:0 30px 80px rgba(51,54,46,.35)">
       <p style="margin:0 0 18px; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#5C6B4F">A note before you read</p>
       <p style="margin:0 0 16px; font-size:15px; line-height:1.9; color:#4A4E42; font-weight:300">These articles are a record of what I'm learning through conversations, training sessions, mentorships, books, other people, and my own experiences while building and leading businesses.</p>
       <p style="margin:0 0 16px; font-size:15px; line-height:1.9; color:#4A4E42; font-weight:300">Unless I specifically say otherwise, I do not claim authorship or ownership of the quotes, sayings, or concepts referenced here. I share them because they influenced my thinking, together with my own interpretation, experiences, and what I'm learning from them.</p>
@@ -52,30 +92,30 @@
   </sc-if>
 
   <!-- Header -->
-  <header style="max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 32px">
+  <header class="site-header" style="max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 32px">
     <sc-if value="{{ onHome }}" hint-placeholder-val="{{ true }}">
-      <a href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
+      <a class="site-brand" href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
         <image-slot id="portrait" shape="circle" src="uploads/WhatsApp Image 2026-08-06 at 9.04.10 AM.jpeg" placeholder="Portrait" style="width:42px; height:42px; flex-shrink:0"></image-slot>
         <span style="font-family:'Cormorant Garamond',serif; font-size:23px; letter-spacing:.03em">Burak Gulum</span>
       </a>
     </sc-if>
     <sc-if value="{{ onPost }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex; align-items:center; gap:28px; min-width:0">
-        <a href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
+      <div class="post-header-row" style="display:flex; align-items:center; gap:28px; min-width:0">
+        <a class="site-brand" href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
           <svg viewBox="0 0 26 34" style="width:22px; height:30px; flex-shrink:0" fill="none">
             <rect x="1.5" y="1.5" width="23" height="31" stroke="#33362E" stroke-width="2"></rect>
             <line x1="13" y1="9" x2="13" y2="25" stroke="#5C6B4F" stroke-width="2"></line>
           </svg>
           <span style="font-family:'Cormorant Garamond',serif; font-size:25px; letter-spacing:.01em">doing it<span style="color:#5C6B4F">.</span></span>
         </a>
-        <div style="display:flex; align-items:center; gap:14px; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#33362E; white-space:nowrap">
+        <div class="post-entry-meta" style="display:flex; align-items:center; gap:14px; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#33362E; white-space:nowrap">
           <span>Entry 001</span>
           <span style="width:36px; height:1px; background:#5C6B4F; display:inline-block"></span>
           <span>August 2026</span>
         </div>
       </div>
     </sc-if>
-    <nav style="display:flex; gap:30px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; align-items:center">
+    <nav class="site-nav" style="display:flex; gap:30px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; align-items:center">
       <a href="#sessions" onClick="{{ goHome }}">Sessions</a>
       <a href="#topics" onClick="{{ goHome }}">Topics</a>
       <a href="#subscribe" onClick="{{ goHome }}">Archive</a>
@@ -87,7 +127,7 @@
   <sc-if value="{{ onHome }}" hint-placeholder-val="{{ true }}">
 
   <!-- Hero -->
-  <section style="max-width:1040px; margin:0 auto; padding:104px 32px 110px; animation:settle .7s ease both">
+  <section class="hero-section" style="max-width:1040px; margin:0 auto; padding:104px 32px 110px; animation:settle .7s ease both">
     <div style="max-width:660px">
       <p style="margin:0 0 24px; font-size:13px; letter-spacing:.3em; text-transform:uppercase; color:#5C6B4F">Small talk was the door.</p>
       <h1 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(40px,5.4vw,66px); line-height:1.14; letter-spacing:.005em">One conversation can open another.</h1>
@@ -97,14 +137,14 @@
   </section>
 
   <!-- Main two-column: latest session left, sidebar right -->
-  <div style="max-width:1040px; margin:0 auto; padding:0 32px 100px; display:grid; grid-template-columns:1fr 280px; gap:72px; align-items:start">
+  <div class="home-shell" style="max-width:1040px; margin:0 auto; padding:0 32px 100px; display:grid; grid-template-columns:1fr 280px; gap:72px; align-items:start">
   <div style="min-width:0">
   <!-- Latest session -->
   <section id="sessions">
     <p style="margin:0 0 36px; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:20px">Latest session</p>
-    <article onClick="{{ openPost }}" style="display:grid; grid-template-columns:1fr 1.1fr; gap:40px; align-items:center; cursor:pointer">
+    <article class="latest-card" onClick="{{ openPost }}" style="display:grid; grid-template-columns:1fr 1.1fr; gap:40px; align-items:center; cursor:pointer">
       <div style="min-width:0">
-        <div style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; background:#EDEAE0">
+        <div class="latest-image" style="width:100%; aspect-ratio:3/4; position:relative; overflow:hidden; background:#EDEAE0">
           <div role="img" aria-label="{{ carouselCaption }}" style="width:100%; height:100%; background-image:{{ carouselBg }}; background-size:cover; background-position:center"></div>
           <button onClick="{{ carouselPrev }}" aria-label="Previous page" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border:1px solid #5C6B4F; border-radius:50%; background:#F7F5EFE6; color:#3E4A35; font-size:16px; cursor:pointer; font-family:'Zen Kaku Gothic New',sans-serif" style-hover="background:#5C6B4F; color:#F7F5EF">←</button>
           <button onClick="{{ carouselNext }}" aria-label="Next page" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:38px; height:38px; border:1px solid #5C6B4F; border-radius:50%; background:#F7F5EFE6; color:#3E4A35; font-size:16px; cursor:pointer; font-family:'Zen Kaku Gothic New',sans-serif" style-hover="background:#5C6B4F; color:#F7F5EF">→</button>
@@ -116,11 +156,11 @@
         </div>
 
       </div>
-      <div style="min-width:0; display:flex; flex-direction:column; gap:20px">
+      <div class="latest-copy" style="min-width:0; display:flex; flex-direction:column; gap:20px">
         <p style="margin:0; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#5C6B4F">Entry 001 · August 14, 2026</p>
         <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(30px,3.4vw,42px); line-height:1.18">From “I'm going to do it” to “I'm doing it.”</h2>
         <p style="margin:0; font-size:16px; line-height:1.9; color:#4A4E42; font-weight:300">A BNI training session about small talk became the day this journal finally started. Small talk is not the destination — it's the door. Better questions, real listening, and the sentence that changed: I'm doing it.</p>
-        <div style="display:flex; gap:26px; align-items:center; margin-top:6px">
+        <div class="latest-actions" style="display:flex; gap:26px; align-items:center; margin-top:6px">
           <span style="font-size:14px; letter-spacing:.12em; color:#5C6B4F; border-bottom:1px solid #5C6B4F; padding-bottom:3px">Read Entry 001</span>
           <span style="font-size:13px; color:#6B6F63">Leadership · Networking</span>
         </div>
@@ -130,14 +170,14 @@
   </div>
 
   <!-- Right sidebar -->
-  <aside style="min-width:0; display:flex; flex-direction:column; gap:56px">
+  <aside class="home-sidebar" style="min-width:0; display:flex; flex-direction:column; gap:56px">
     <!-- Archive -->
     <section>
       <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:18px">All sessions</p>
       <div style="display:flex; flex-direction:column">
         <sc-for list="{{ archive }}" as="post" hint-placeholder-count="4">
           <div onClick="{{ openPost }}" style="display:flex; flex-direction:column; gap:4px; padding:12px 4px; border-bottom:1px solid #33362E1A; cursor:pointer" style-hover="background:#EDEAE0">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px">
+            <div class="archive-row" style="display:flex; justify-content:space-between; align-items:baseline; gap:12px">
               <span style="font-size:12px; color:#6B6F63">{{ post.date }}</span>
               <span style="font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5C6B4F">{{ post.status }}</span>
             </div>
@@ -160,7 +200,7 @@
     <!-- Newsletter -->
     <section id="subscribe">
       <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63; border-top:1px solid #33362E24; padding-top:18px">One page, once a week</p>
-      <div style="display:flex; gap:10px; align-items:stretch">
+      <div class="subscribe-form" style="display:flex; gap:10px; align-items:stretch">
         <input value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@company.com" aria-label="Email address" style="flex:1; min-width:0; border:none; border-bottom:1px solid #33362E88; background:transparent; padding:8px 2px; font-size:13px; font-family:'Zen Kaku Gothic New',sans-serif; outline:none; color:#33362E"></input>
         <button onClick="{{ subscribe }}" style="border:1px solid #5C6B4F; background:transparent; color:#3E4A35; padding:8px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer; white-space:nowrap" style-hover="background:#5C6B4F; color:#F7F5EF">{{ subscribeLabel }}</button>
       </div>
@@ -171,10 +211,10 @@
 
   <sc-if value="{{ onPost }}" hint-placeholder-val="{{ false }}">
   <article style="animation:settle .6s ease both" data-screen-label="Entry 001">
-    <div style="max-width:640px; margin:0 auto; padding:72px 32px 100px">
+    <div class="post-body" style="max-width:640px; margin:0 auto; padding:72px 32px 100px">
       <a href="#" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:.22em; text-transform:uppercase">← All entries</a>
-      <p style="margin:52px 0 10px; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:#5C6B4F">LEADERSHIP · NETWORKING&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;COMMUNICATION&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;BNI</p>
-      <h1 style="margin:0 0 56px; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(36px,4.4vw,52px); line-height:1.16">From “I'm going to do it” to “I'm doing it.”</h1>
+      <p class="entry-kicker" style="margin:52px 0 10px; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:#5C6B4F">LEADERSHIP · NETWORKING&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;COMMUNICATION&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;BNI</p>
+      <h1 class="entry-title" style="margin:0 0 56px; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(36px,4.4vw,52px); line-height:1.16">From “I'm going to do it” to “I'm doing it.”</h1>
 
       <h2 style="font-family:'Cormorant Garamond',serif; font-weight:400; font-size:27px; margin:0 0 16px">Why this journal exists.</h2>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">Most of the notes eventually disappears into notebooks.</p>
@@ -185,7 +225,7 @@
       <div style="border-left:2px solid #5C6B4F; padding:4px 0 4px 26px; margin:36px 0">
         <p style="margin:0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; line-height:2; color:#33362E">..move from I am going to do it to I am doing it.</p>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 220px; gap:28px; align-items:start">
+      <div class="entry-media-grid" style="display:grid; grid-template-columns:1fr 220px; gap:28px; align-items:start">
         <div style="min-width:0">
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">In my notes, I wrote: Derivatives and underneath it: trust for growth. My ideas were forming live from my finance background, I was thinking about the movement when Allsion was talking about “growth”. Going from one place or state to another.</p>
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 8px">“I'm going to do it” is intention.</p>
@@ -193,7 +233,7 @@
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">There is a movement in between. And movement is where growth starts.</p>
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 0">So, this is Entry 001. I am doing it.</p>
         </div>
-        <div style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
+        <div class="entry-image-frame" style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
           <image-slot id="entry-derivative-note" shape="rect" src="uploads/B240E89C-F1AC-42C0-875C-0943FD43F3D3.jpeg" placeholder="Notebook page"></image-slot>
         </div>
       </div>
@@ -219,8 +259,8 @@
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">You know their profession. But you do not necessarily know anything about them.</p>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">Instead, during the training we experimented with “What's keeping you busy these days?” A question that can go almost anywhere.</p>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">Maybe they are expanding their business, maybe they are struggling to hire, maybe they are busy with something completely out of business. Now, you are having a real conversation rather than exchanging job titles.</p>
-      <div style="display:grid; grid-template-columns:220px 1fr; gap:28px; align-items:start">
-        <div style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
+      <div class="entry-media-grid" style="display:grid; grid-template-columns:220px 1fr; gap:28px; align-items:start">
+        <div class="entry-image-frame" style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
           <image-slot id="entry-questions-note" shape="rect" src="uploads/F44C60ED-824C-4E52-A722-018E2312B494.jpeg" placeholder="Notebook page"></image-slot>
         </div>
         <div style="min-width:0">
@@ -242,7 +282,7 @@
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 8px">It was about how relationships become business infrastructure.</p>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 8px">A stranger doesn't normally go: meet - understand your company - trust you - refer you.</p>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">There are intermediate stages.</p>
-      <p style="font-size:14px; letter-spacing:.1em; line-height:2; color:#5C6B4F; margin:0 0 20px">Visibility – Conversation – familiarity – understanding – trust – relationship – referral</p>
+      <p class="entry-chain" style="font-size:14px; letter-spacing:.1em; line-height:2; color:#5C6B4F; margin:0 0 20px">Visibility – Conversation – familiarity – understanding – trust – relationship – referral</p>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 0">Small talk is simply one of the mechanisms that starts that movement, a door.</p>
 
       
@@ -298,6 +338,7 @@
 
       <h2 style="font-family:'Cormorant Garamond',serif; font-weight:400; font-size:24px; margin:56px 0 14px">About this journal</h2>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 40px">This isn't a collection of polish business advice. I'm documenting what I'm learning while I'm leaning it. Some ideas will work, some will chance, some may turn out to be wrong. I will document those too. BNI is the one the places I am currently learning. Businesses are the places I'm applying it. This journal connects the two.</p>
+      <p style="font-size:14px; line-height:1.9; color:#5E6257; font-weight:300; margin:0 0 42px; border-top:1px solid #33362E24; padding-top:24px"><strong style="font-weight:500; color:#3E4237">Sources and acknowledgements:</strong> This entry reflects a BNI training session led by Allison Mountstevens. The small-talk-as-a-doorway concept also appears in The Official BNI Podcast, Episode 972. “Networking is farming, not hunting” is attributed to BNI founder Dr. Ivan Misner, and BNI’s VCP process informed my interpretation of relationship-building stages. The personal story, examples, business applications and interpretations are my own.</p>
       <!-- Comments -->
       <div style="border-top:1px solid #33362E24; padding:28px 0 0; margin:0 0 48px">
         <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63">Thoughts</p>
@@ -311,7 +352,7 @@
           <div style="display:flex; flex-direction:column; gap:14px; margin:0 0 20px">
             <input value="{{ commentName }}" onChange="{{ setCommentName }}" placeholder="Your name" aria-label="Your name" style="border:none; border-bottom:1px solid #33362E88; background:transparent; padding:9px 2px; font-size:14px; font-family:'Zen Kaku Gothic New',sans-serif; outline:none; color:#33362E; max-width:320px"></input>
             <textarea value="{{ commentText }}" onChange="{{ setCommentText }}" placeholder="Share a thought…" aria-label="Your comment" rows="4" style="border:1px solid #33362E44; background:transparent; padding:12px; font-size:14px; line-height:1.8; font-family:'Zen Kaku Gothic New',sans-serif; outline:none; color:#33362E; resize:vertical"></textarea>
-            <div style="display:flex; gap:14px">
+            <div class="comment-actions" style="display:flex; gap:14px">
               <button onClick="{{ submitComment }}" style="border:1px solid #5C6B4F; background:transparent; color:#3E4A35; padding:9px 22px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer" style-hover="background:#5C6B4F; color:#F7F5EF">Post</button>
               <button onClick="{{ toggleCommentForm }}" style="border:none; background:none; color:#6B6F63; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer">Cancel</button>
             </div>
@@ -327,10 +368,10 @@
   </sc-if>
 
   <!-- Footer -->
-  <footer id="connect" style="max-width:1040px; margin:0 auto; padding:48px 32px 44px">
-    <div style="border-top:1px solid #33362E24; padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; gap:28px; flex-wrap:wrap">
+  <footer id="connect" class="site-footer" style="max-width:1040px; margin:0 auto; padding:48px 32px 44px">
+    <div class="footer-inner" style="border-top:1px solid #33362E24; padding-top:28px; display:flex; justify-content:space-between; align-items:baseline; gap:28px; flex-wrap:wrap">
       <p style="margin:0; font-family:'Cormorant Garamond',serif; font-size:24px">Let's have a real conversation.</p>
-      <div style="display:flex; gap:26px; font-size:13px; letter-spacing:.14em; text-transform:uppercase">
+      <div class="footer-links" style="display:flex; gap:26px; font-size:13px; letter-spacing:.14em; text-transform:uppercase">
         <a href="mailto:bgulum@greenpacificcleaning.ca">Email</a>
         <a href="https://www.linkedin.com/in/sebahattin-gulum-53571541" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://bnibc.ca/en-CA/coregroupdetail?coreGroupId=fjOI8N2N6wqSMuuTmSSR3w%3D%3D&amp;name=BNI%20BC%20Burnaby%204" target="_blank" rel="noopener">BNI Chapter Forming</a>
