@@ -338,7 +338,7 @@
 
       <h2 style="font-family:'Cormorant Garamond',serif; font-weight:400; font-size:24px; margin:56px 0 14px">About this journal</h2>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 40px">This isn't a collection of polish business advice. I'm documenting what I'm learning while I'm leaning it. Some ideas will work, some will chance, some may turn out to be wrong. I will document those too. BNI is the one the places I am currently learning. Businesses are the places I'm applying it. This journal connects the two.</p>
-      <p style="font-size:14px; line-height:1.9; color:#5E6257; font-weight:300; margin:0 0 42px; border-top:1px solid #33362E24; padding-top:24px"><strong style="font-weight:500; color:#3E4237">Sources and acknowledgements:</strong> This entry reflects a BNI training session led by Allison Mountstevens. The small-talk-as-a-doorway concept also appears in The Official BNI Podcast, Episode 972. “Networking is farming, not hunting” is attributed to BNI founder Dr. Ivan Misner, and BNI’s VCP process informed my interpretation of relationship-building stages. The personal story, examples, business applications and interpretations are my own.</p>
+      <p style="font-size:12.5px; line-height:1.75; color:#6B6F63; font-weight:300; margin:0 0 38px; border-top:1px solid #33362E1A; padding-top:20px"><strong style="font-weight:400; color:#4A4E42">Sources and acknowledgements:</strong> This entry reflects a BNI training session led by Allison Mountstevens. The small-talk-as-a-doorway concept also appears in The Official BNI Podcast, Episode 972. “Networking is farming, not hunting” is attributed to BNI founder Dr. Ivan Misner, and BNI’s VCP process informed my interpretation of relationship-building stages. The personal story, examples, business applications and interpretations are my own.</p>
       <!-- Comments -->
       <div style="border-top:1px solid #33362E24; padding:28px 0 0; margin:0 0 48px">
         <p style="margin:0 0 16px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#6B6F63">Thoughts</p>
@@ -353,7 +353,7 @@
             <input value="{{ commentName }}" onChange="{{ setCommentName }}" placeholder="Your name" aria-label="Your name" style="border:none; border-bottom:1px solid #33362E88; background:transparent; padding:9px 2px; font-size:14px; font-family:'Zen Kaku Gothic New',sans-serif; outline:none; color:#33362E; max-width:320px"></input>
             <textarea value="{{ commentText }}" onChange="{{ setCommentText }}" placeholder="Share a thought…" aria-label="Your comment" rows="4" style="border:1px solid #33362E44; background:transparent; padding:12px; font-size:14px; line-height:1.8; font-family:'Zen Kaku Gothic New',sans-serif; outline:none; color:#33362E; resize:vertical"></textarea>
             <div class="comment-actions" style="display:flex; gap:14px">
-              <button onClick="{{ submitComment }}" style="border:1px solid #5C6B4F; background:transparent; color:#3E4A35; padding:9px 22px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer" style-hover="background:#5C6B4F; color:#F7F5EF">Post</button>
+              <button onClick="{{ submitComment }}" style="border:1px solid #5C6B4F; background:transparent; color:#3E4A35; padding:9px 22px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer" style-hover="background:#5C6B4F; color:#F7F5EF">{{ commentSubmitLabel }}</button>
               <button onClick="{{ toggleCommentForm }}" style="border:none; background:none; color:#6B6F63; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-family:'Zen Kaku Gothic New',sans-serif; cursor:pointer">Cancel</button>
             </div>
           </div>
@@ -383,16 +383,26 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;carouselAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Notes carousel&quot;},&quot;carouselAutoplaySeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:4,&quot;min&quot;:2,&quot;max&quot;:15,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Notes carousel&quot;}}">
 class Component extends DCLogic {
-  state = { view: 'home', email: '', subscribed: false, animOn: true, noteOpen: true, slide: 0, comments: [], commentFormOpen: false, commentName: '', commentText: '' };
-  componentWillMount() { try { const saved = JSON.parse(localStorage.getItem('bg-journal-comments-entry001') || '[]'); this.setState({ comments: saved }); } catch (e) {} }
+  state = { view: 'home', email: '', subscribed: false, animOn: true, noteOpen: true, slide: 0, comments: [], commentFormOpen: false, commentName: '', commentText: '', commentSent: false };
+  contactEmail = 'bgulum@greenpacificcleaning.ca';
+  mailto = (subject, body) => {
+    window.location.href = 'mailto:' + this.contactEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  };
+  subscribe = () => {
+    const email = this.state.email.trim();
+    const body = email
+      ? 'Please add this email to the journal updates list: ' + email
+      : 'Please add me to the journal updates list.';
+    this.setState({ subscribed: true });
+    this.mailto('Subscribe to doing it.', body);
+  };
   submitComment = () => {
     const name = this.state.commentName.trim() || 'Anonymous';
     const text = this.state.commentText.trim();
     if (!text) return;
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const comments = [...this.state.comments, { name, text, date }];
-    this.setState({ comments, commentFormOpen: false, commentName: '', commentText: '' });
-    try { localStorage.setItem('bg-journal-comments-entry001', JSON.stringify(comments)); } catch (e) {}
+    const body = 'Name: ' + name + '\n\nEntry: 001 - From I am going to do it to I am doing it.\n\nThought:\n' + text;
+    this.setState({ commentSent: true, commentFormOpen: false, commentName: '', commentText: '' });
+    this.mailto('Thought on Entry 001', body);
   };
   pages = [
     { src: 'uploads/7D4FA20C-5CF3-494E-98E9-6EBD5C749EE0.jpeg', cap: 'The session page \u2014 Aug 14, Friday.' },
@@ -430,8 +440,8 @@ class Component extends DCLogic {
       })),
       email: this.state.email,
       setEmail: (e) => this.setState({ email: e.target.value }),
-      subscribe: () => this.setState({ subscribed: true }),
-      subscribeLabel: this.state.subscribed ? 'Received' : 'Subscribe',
+      subscribe: this.subscribe,
+      subscribeLabel: this.state.subscribed ? 'Email opened' : 'Subscribe',
       lessonMap: [
         { pad: 0, label: 'Small talk' }, { pad: 22, label: 'Better questions' },
         { pad: 44, label: 'Listen' }, { pad: 66, label: 'Stories \u00b7 Challenges \u00b7 Goals' },
@@ -446,12 +456,13 @@ class Component extends DCLogic {
       comments: this.state.comments,
       commentFormOpen: this.state.commentFormOpen,
       commentFormClosed: !this.state.commentFormOpen,
-      toggleCommentForm: () => this.setState(s => ({ commentFormOpen: !s.commentFormOpen })),
+      toggleCommentForm: () => this.setState(s => ({ commentFormOpen: !s.commentFormOpen, commentSent: false })),
       commentName: this.state.commentName,
       setCommentName: (e) => this.setState({ commentName: e.target.value }),
       commentText: this.state.commentText,
       setCommentText: (e) => this.setState({ commentText: e.target.value }),
       submitComment: this.submitComment,
+      commentSubmitLabel: this.state.commentSent ? 'Email opened' : 'Send thought',
     };
   }
 }
