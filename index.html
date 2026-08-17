@@ -11,6 +11,7 @@
 <meta name="application-name" content="Leadership &amp; Learning Journal | Burak Gulum">
 <meta name="theme-color" content="#F7F5EF">
 <link rel="canonical" href="https://www.gunesoriginals.com/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Leadership &amp; Learning Journal | Burak Gulum">
 <meta property="og:title" content="Leadership &amp; Learning Journal | Burak Gulum">
@@ -22,11 +23,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Leadership & Learning Journal | Burak Gulum",
-  "url": "https://www.gunesoriginals.com/",
-  "description": "A leadership and learning journal by Burak Gulum about networking, listening, relationships, and building businesses through action.",
-  "inLanguage": "en"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.gunesoriginals.com/#burak-gulum",
+      "name": "Burak Gulum",
+      "url": "https://www.gunesoriginals.com/",
+      "sameAs": [
+        "https://www.linkedin.com/in/sebahattin-gulum-53571541"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.gunesoriginals.com/#website",
+      "name": "Leadership & Learning Journal | Burak Gulum",
+      "url": "https://www.gunesoriginals.com/",
+      "description": "A leadership and learning journal by Burak Gulum about networking, listening, relationships, and building businesses through action.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://www.gunesoriginals.com/#burak-gulum"
+      }
+    }
+  ]
 }
 </script>
 <script src="./support.js"></script>
@@ -111,7 +129,7 @@
   <header class="site-header" style="max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 32px">
     <sc-if value="{{ onHome }}" hint-placeholder-val="{{ true }}">
       <a class="site-brand" href="#" onClick="{{ goHome }}" style="display:flex; align-items:center; gap:14px; color:#33362E; text-decoration:none">
-        <image-slot id="portrait" shape="circle" src="uploads/WhatsApp Image 2026-08-06 at 9.04.10 AM.jpeg" placeholder="Portrait" style="width:42px; height:42px; flex-shrink:0"></image-slot>
+        <image-slot id="portrait" role="img" aria-label="Portrait of Burak Gulum" shape="circle" src="uploads/WhatsApp Image 2026-08-06 at 9.04.10 AM.jpeg" placeholder="Portrait" style="width:42px; height:42px; flex-shrink:0"></image-slot>
         <span style="font-family:'Cormorant Garamond',serif; font-size:23px; letter-spacing:.03em">Burak Gulum</span>
       </a>
     </sc-if>
@@ -177,7 +195,7 @@
         <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(30px,3.4vw,42px); line-height:1.18">From “I'm going to do it” to “I'm doing it.”</h2>
         <p style="margin:0; font-size:16px; line-height:1.9; color:#4A4E42; font-weight:300">A BNI training session about small talk became the day this journal finally started. Small talk is not the destination — it's the door. Better questions, real listening, and the sentence that changed: I'm doing it.</p>
         <div class="latest-actions" style="display:flex; gap:26px; align-items:center; margin-top:6px">
-          <span style="font-size:14px; letter-spacing:.12em; color:#5C6B4F; border-bottom:1px solid #5C6B4F; padding-bottom:3px">Read Entry 001</span>
+          <a href="/entries/001-im-going-to-do-it-im-doing-it/" style="font-size:14px; letter-spacing:.12em; color:#5C6B4F; border-bottom:1px solid #5C6B4F; padding-bottom:3px; text-decoration:none">Read Entry 001</a>
           <span style="font-size:13px; color:#6B6F63">Leadership · Networking</span>
         </div>
       </div>
@@ -250,7 +268,7 @@
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 0">So, this is Entry 001. I am doing it.</p>
         </div>
         <div class="entry-image-frame" style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
-          <image-slot id="entry-derivative-note" shape="rect" src="uploads/B240E89C-F1AC-42C0-875C-0943FD43F3D3.jpeg" placeholder="Notebook page"></image-slot>
+          <image-slot id="entry-derivative-note" role="img" aria-label="Handwritten notebook notes about derivatives, trust, growth, and moving from intention to action." shape="rect" src="uploads/B240E89C-F1AC-42C0-875C-0943FD43F3D3.jpeg" placeholder="Notebook page"></image-slot>
         </div>
       </div>
 
@@ -277,7 +295,7 @@
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">Maybe they are expanding their business, maybe they are struggling to hire, maybe they are busy with something completely out of business. Now, you are having a real conversation rather than exchanging job titles.</p>
       <div class="entry-media-grid" style="display:grid; grid-template-columns:220px 1fr; gap:28px; align-items:start">
         <div class="entry-image-frame" style="min-width:0; width:100%; aspect-ratio:3/4; position:relative; overflow:hidden">
-          <image-slot id="entry-questions-note" shape="rect" src="uploads/F44C60ED-824C-4E52-A722-018E2312B494.jpeg" placeholder="Notebook page"></image-slot>
+          <image-slot id="entry-questions-note" role="img" aria-label="Handwritten notebook notes listing better opening questions for business conversations." shape="rect" src="uploads/F44C60ED-824C-4E52-A722-018E2312B494.jpeg" placeholder="Notebook page"></image-slot>
         </div>
         <div style="min-width:0">
           <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 16px">Some of the questions from my notes:</p>
