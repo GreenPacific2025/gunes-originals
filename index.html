@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>doing it. — Leadership &amp; Learning Journal | Burak Gulum</title>
+<title>Burak Gulum — Leadership &amp; Learning Journal</title>
 <meta name="description" content="A leadership and learning journal by Burak Gulum about networking, listening, relationships, and building businesses through action.">
 <meta name="author" content="S. Burak Gulum">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#F7F5EF">
 <link rel="canonical" href="https://www.gunesoriginals.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="doing it. — Leadership &amp; Learning Journal">
-<meta property="og:description" content="From ‘I’m going to do it’ to ‘I’m doing it.’ A journal about leadership, networking, and building businesses through action.">
+<meta property="og:title" content="Burak Gulum — Leadership &amp; Learning Journal">
+<meta property="og:description" content="A journal about leadership, networking, and building businesses through action. Entry 001: doing it.">
 <meta property="og:url" content="https://www.gunesoriginals.com/">
 <script src="./support.js"></script>
 </head>
@@ -106,7 +106,7 @@
             <rect x="1.5" y="1.5" width="23" height="31" stroke="#33362E" stroke-width="2"></rect>
             <line x1="13" y1="9" x2="13" y2="25" stroke="#5C6B4F" stroke-width="2"></line>
           </svg>
-          <span style="font-family:'Cormorant Garamond',serif; font-size:25px; letter-spacing:.01em">doing it<span style="color:#5C6B4F">.</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:25px; letter-spacing:.01em">Burak Gulum</span>
         </a>
         <div class="post-entry-meta" style="display:flex; align-items:center; gap:14px; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#33362E; white-space:nowrap">
           <span>Entry 001</span>
@@ -158,8 +158,8 @@
       </div>
       <div class="latest-copy" style="min-width:0; display:flex; flex-direction:column; gap:20px">
         <p style="margin:0; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#5C6B4F">Entry 001 · August 14, 2026</p>
-        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(30px,3.4vw,42px); line-height:1.18">From “I'm going to do it” to “I'm doing it.”</h2>
-        <p style="margin:0; font-size:16px; line-height:1.9; color:#4A4E42; font-weight:300">A BNI training session about small talk became the day this journal finally started. Small talk is not the destination — it's the door. Better questions, real listening, and the sentence that changed: I'm doing it.</p>
+        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(30px,3.4vw,42px); line-height:1.18">doing it.</h2>
+        <p style="margin:0; font-size:16px; line-height:1.9; color:#4A4E42; font-weight:300">From “I'm going to do it” to “I'm doing it.” A BNI training session about small talk became the day this journal finally started. Small talk is not the destination — it's the door.</p>
         <div class="latest-actions" style="display:flex; gap:26px; align-items:center; margin-top:6px">
           <span style="font-size:14px; letter-spacing:.12em; color:#5C6B4F; border-bottom:1px solid #5C6B4F; padding-bottom:3px">Read Entry 001</span>
           <span style="font-size:13px; color:#6B6F63">Leadership · Networking</span>
@@ -214,7 +214,8 @@
     <div class="post-body" style="max-width:640px; margin:0 auto; padding:72px 32px 100px">
       <a href="#" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:.22em; text-transform:uppercase">← All entries</a>
       <p class="entry-kicker" style="margin:52px 0 10px; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:#5C6B4F">LEADERSHIP · NETWORKING&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;COMMUNICATION&nbsp;<span style="letter-spacing: 3.38px;">·</span>&nbsp;BNI</p>
-      <h1 class="entry-title" style="margin:0 0 56px; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(36px,4.4vw,52px); line-height:1.16">From “I'm going to do it” to “I'm doing it.”</h1>
+      <h1 class="entry-title" style="margin:0 0 16px; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(42px,5vw,58px); line-height:1.12">doing it.</h1>
+      <p style="margin:0 0 56px; font-size:16px; line-height:1.8; color:#5E6257; font-weight:300">From “I'm going to do it” to “I'm doing it.”</p>
 
       <h2 style="font-family:'Cormorant Garamond',serif; font-weight:400; font-size:27px; margin:0 0 16px">Why this journal exists.</h2>
       <p style="font-size:16px; line-height:2; color:#3E4237; font-weight:300; margin:0 0 20px">Most of the notes eventually disappears into notebooks.</p>
@@ -394,13 +395,13 @@ class Component extends DCLogic {
       ? 'Please add this email to the journal updates list: ' + email
       : 'Please add me to the journal updates list.';
     this.setState({ subscribed: true });
-    this.mailto('Subscribe to doing it.', body);
+    this.mailto('Subscribe to Burak Gulum journal', body);
   };
   submitComment = () => {
     const name = this.state.commentName.trim() || 'Anonymous';
     const text = this.state.commentText.trim();
     if (!text) return;
-    const body = 'Name: ' + name + '\n\nEntry: 001 - From I am going to do it to I am doing it.\n\nThought:\n' + text;
+    const body = 'Name: ' + name + '\n\nEntry: 001 - doing it.\n\nThought:\n' + text;
     this.setState({ commentSent: true, commentFormOpen: false, commentName: '', commentText: '' });
     this.mailto('Thought on Entry 001', body);
   };
@@ -450,7 +451,7 @@ class Component extends DCLogic {
         { pad: 176, label: 'Relationship' }, { pad: 198, label: 'Referrals' },
       ],
       archive: [
-        { date: 'Aug 14', title: 'Entry 001 \u00b7 From \u201cI\u2019m going to do it\u201d to \u201cI\u2019m doing it.\u201d', status: 'Read' },
+        { date: 'Aug 14', title: 'Entry 001 \u00b7 doing it.', status: 'Read' },
       ],
       topics: ['Networking', 'Listening', 'Leadership', 'Mindset', 'Relationships', 'Communication'],
       comments: this.state.comments,
